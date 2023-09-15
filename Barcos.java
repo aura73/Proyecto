@@ -74,9 +74,10 @@ public class Barcos {
         int fila = f1;
         int columna = c1;
         char barco = (char) ('D');
-
-        // VALIDACION
-
+        if (matriz[fila][columna] != '*' || matriz[fila + 1][columna] != '*') {
+            System.out.println("Casilla ocupada");
+            return false;
+        }
         matriz[fila][columna] = barco;
 
         // FALTA VALIDAR LA POSICION
