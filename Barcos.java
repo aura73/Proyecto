@@ -96,19 +96,15 @@ public class Barcos {
         return true;
     }
     //Método para ubicar barco de TRES casillas
-    private static boolean barco3(int TAMANO) {
-        Random random = new Random();
-        int fila = random.nextInt(TAMANO);
-        int columna = random.nextInt(TAMANO - 2);
-
-        if (matriz[fila][columna] != '*' || matriz[fila][columna + 1] != '*' || matriz[fila][columna + 2] != '*') {
+    private static boolean barco3(int f1, int c1) {
+        if (matriz[f1][c1] != '*' || matriz[f1][c1 + 1] != '*' || matriz[f1][c1 + 2] != '*') {
             return false;
         }
 
         char barco = (char) ('C'); // 'A', 'B', 'C', ...
-        matriz[fila][columna] = barco;
-        matriz[fila][columna + 1] = barco;
-        matriz[fila][columna + 2] = barco;
+        matriz[f1][c1] = barco;
+        matriz[f1][c1 + 1] = barco;
+        matriz[f1][c1 + 2] = barco;
         return true;
     }
     //Método para ubicar barcos de CUATRO casillas horizontal
