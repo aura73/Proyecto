@@ -2,13 +2,14 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Barcos {
+    //Variables que existen para todo el codigo 
     static char[][] matriz;
-    static int[] tiposBarcos = {0, 0, 1, 1, 1};
+    static int[] tiposBarcos = {0, 0, 1, 1, 2, 3};
     static int TAMANO = 7;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        matriz = inicializarMatriz(TAMANO);
+        matriz = inicializarMatriz();
         boolean posicionValida = true;
 
         String[] mensajes = {
@@ -16,6 +17,8 @@ public class Barcos {
                 "Ingrese la coordenada del barco %d (fila columna) tenga encuenta que el barco  ocupa 1 casilla",
                 "Ingrese la coordenada del barco %d (fila columna) tenga encuenta que el barco  ocupa 2 casilla verticalmente",
                 "Ingrese la coordenada del barco %d (fila columna) tenga encuenta que el barco  ocupa 2 casilla verticalmente"
+                "Ingrese la coordenada del barco %d (fila columna) tenga encuenta que el barco  ocupa 3 casilla horizontalmente"
+                "Ingrese la coordenada del barco %d (fila columna) tenga encuenta que el barco  ocupa 4 casilla horizontalmente"
         };
 
         for(int i = 0; i < tiposBarcos.length; i++){
@@ -28,11 +31,9 @@ public class Barcos {
                 imprimirMatriz();
             }while (posicionValida == false);
         }
-
-
     }
-    // Método para inicializar la matriz con asteriscos
-    private static char[][] inicializarMatriz(int TAMANO) {
+    //char[][] significa devolver matriz
+    private static char[][] inicializarMatriz() {
         char[][] matriz = new char[TAMANO][TAMANO];
         for (int i = 0; i < TAMANO; i++) {
             for (int j = 0; j < TAMANO; j++) {
@@ -73,14 +74,12 @@ public class Barcos {
     private static boolean barco1(int f1, int c1) {
         int fila = f1;
         int columna = c1;
-        char barco = (char) ('D');
-        if (matriz[fila][columna] != '*' || matriz[fila + 1][columna] != '*') {
+        if (matriz[fila][columna] != '*') {
             System.out.println("Casilla ocupada");
             return false;
         }
+        char barco = (char) ('D');
         matriz[fila][columna] = barco;
-
-        // FALTA VALIDAR LA POSICION
         return true;
     }
 
