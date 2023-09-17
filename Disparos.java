@@ -58,4 +58,19 @@ public class Disparos {
         }
 
     }
+    private static void barco3(char[][] matriz, int TAMANO) {
+        Random random = new Random();
+        int fila = random.nextInt(TAMANO);
+        int columna = random.nextInt(TAMANO - 2);
+
+        while (matriz[fila][columna] != '*' || matriz[fila][columna + 1] != '*' || matriz[fila][columna + 2] != '*') {
+            fila = random.nextInt(TAMANO);
+            columna = random.nextInt(TAMANO - 2);
+        }
+
+        char barco = (char) ('C' ); // 'A', 'B', 'C', ...
+        matriz[fila][columna] = barco;
+        matriz[fila][columna + 1] = barco;
+        matriz[fila][columna + 2] = barco;
+    }
 }
