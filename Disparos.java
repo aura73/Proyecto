@@ -40,4 +40,22 @@ public class Disparos {
             System.out.println();
         }
     }
+    private static void barco2(char[][] matriz, int TAMANO) {
+        Random random = new Random();
+        for (int i = 0; i < 2; i++) {
+            int fila = random.nextInt(TAMANO-1);
+            int columna = random.nextInt(TAMANO );
+
+            while (matriz[fila][columna] != '*' || matriz[fila+1][columna] != '*') {
+                fila = random.nextInt(TAMANO-1);
+                columna = random.nextInt(TAMANO );
+            }
+
+            char barco = (char) ('A' + i);
+            matriz[fila][columna] = barco;
+            matriz[fila+1][columna] = barco;
+
+        }
+
+    }
 }
