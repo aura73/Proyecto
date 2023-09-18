@@ -6,8 +6,49 @@ public class Disparos {
         int TAMANO = 7;
         char[][] matriz = inicializarMatriz(TAMANO);
         barco1(matriz,TAMANO);
+        barco2(matriz, TAMANO);
+        barco3(matriz, TAMANO);
+        barco4(matriz, TAMANO);
         imprimirMatriz(matriz);
+
+
+        int barcosRestantes =6; // Inicialmente hay 6 barcos
+
+        while (barcosRestantes > 0) {
+            System.out.print("Ingrese una coordenada (fila columna): ");
+            int filaUsuario = scanner.nextInt();
+            int columnaUsuario = scanner.nextInt();
+
+            if (verificarCoordenada(matriz, filaUsuario, columnaUsuario)) {
+                barcosRestantes--;
+                if (barcosRestantes == 0) {
+                    System.out.println("¡Has hundido todos los barcos!");
+                    break;
+                }
+            }
+        }
+
+        System.out.println("Fin del juego.");
+
     }
+    private static boolean verificarCoordenada(char[][] matriz, int filaUsuario, int columnaUsuario) {
+        if (filaUsuario >= 0 && filaUsuario < matriz.length && columnaUsuario >= 0 && columnaUsuario < matriz[0].length) {
+            char objeto = matriz[filaUsuario][columnaUsuario];
+            if (objeto != '*') {
+                System.out.println("¡Hay un barco en esa coordenada! (" + objeto + ")");
+                matriz[filaUsuario][columnaUsuario] = '/';
+                return true; // Devuelve true si se acertó un barco
+            } else {
+                System.out.println("No hay un barco en esa coordenada.");
+            }
+        } else {
+            System.out.println("Coordenada fuera de rango.");
+        }
+        return false; // Devuelve false si no se acertó un barco o la coordenada estaba fuera de rango
+    }
+
+
+
     private static char[][] inicializarMatriz(int TAMANO) {
         char[][] matriz = new char[TAMANO][TAMANO];
         for (int i = 0; i < TAMANO; i++) {
