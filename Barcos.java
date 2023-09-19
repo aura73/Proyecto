@@ -1,4 +1,3 @@
-import java.util.Random;
 import java.util.Scanner;
 
 public class Barcos {
@@ -24,7 +23,7 @@ public class Barcos {
         for(int i = 0; i < tiposBarcos.length; i++){
             int tipoBarco = tiposBarcos[i];
             do {
-                System.out.print(String.format(mensajes[tipoBarco +1], i));
+                System.out.print(String.format(mensajes[i], i+1));
                 int f1 = scanner.nextInt();
                 int c1 = scanner.nextInt();
                 posicionValida = adicionarBarco(f1, c1, tipoBarco);
@@ -85,13 +84,12 @@ public class Barcos {
     private static boolean barco2(int f1, int c1) {
         int fila = f1;
         int columna = c1;
-        if (matriz[fila][columna] != '*' || matriz[fila + 1][columna] != '*') {
-            System.out.println("Casilla ocupada");
+        if(fila > TAMANO - 2){
+            System.out.println("Espacio insuficiente");
             return false;
         }
-
-        if(columna > TAMANO - 2){
-            System.out.println("Espacio insuficiente");
+        if (matriz[fila][columna] != '*' || matriz[fila + 1][columna] != '*') {
+            System.out.println("Casilla ocupada");
             return false;
         }
         char barco = 'A';
@@ -103,15 +101,14 @@ public class Barcos {
     private static boolean barco3(int f1, int c1) {
         int fila = f1;
          int columna = c1;
-        if (matriz[fila][columna] != '*' || matriz[f1][c1 + 1] != '*' || matriz[f1][c1 + 2] != '*') {
-            System.out.println("Casilla ocupada");
-            return false;
-        }
         if(columna > TAMANO - 3){
             System.out.println("Espacio insuficiente");
             return false;
         }
-
+        if (matriz[fila][columna] != '*' || matriz[fila][columna + 1] != '*' || matriz[fila][columna + 2] != '*') {
+            System.out.println("Casilla ocupada");
+            return false;
+        }
         char barco = 'C';
         matriz[f1][c1] = barco;
         matriz[f1][c1 + 1] = barco;
@@ -122,14 +119,15 @@ public class Barcos {
     private static boolean barco4(int f1, int c1) {
         int fila = f1;
         int columna = c1;
-        if (matriz[fila][columna] != '*' || matriz[fila][columna + 1] != '*' || matriz[fila][columna + 2] != '*' || matriz[fila][columna + 3] != '*') {
-            System.out.println("Casilla ocupada");
-            return false;
-        }
         if(columna > TAMANO - 4){
             System.out.println("Espacio insuficiente");
             return false;
         }
+        if (matriz[fila][columna] != '*' || matriz[fila][columna + 1] != '*' || matriz[fila][columna + 2] != '*' || matriz[fila][columna + 3] != '*') {
+            System.out.println("Casilla ocupada");
+            return false;
+        }
+
         char barco = 'F';
         matriz[fila][columna] = barco;
         matriz[fila][columna + 1] = barco;
